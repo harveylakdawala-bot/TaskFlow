@@ -1,0 +1,20 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">TaskFlow AI avatar</title>
+  <desc id="desc">A purple and cyan artificial intelligence assistant icon.</desc>
+  <rect width="160" height="160" rx="36" fill="#090812"/>
+  <rect x="26" y="36" width="108" height="88" rx="28" fill="url(#paint0_linear)" stroke="white" stroke-opacity="0.18" stroke-width="2"/>
+  <rect x="44" y="66" width="22" height="16" rx="8" fill="#B7F7FF"/>
+  <rect x="94" y="66" width="22" height="16" rx="8" fill="#B7F7FF"/>
+  <path d="M61 100C70 108 90 108 99 100" stroke="white" stroke-width="7" stroke-linecap="round"/>
+  <path d="M80 36V21" stroke="#A855F7" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="80" cy="18" r="9" fill="#C084FC"/>
+  <path d="M28 79H17" stroke="#22D3EE" stroke-width="8" stroke-linecap="round"/>
+  <path d="M143 79H132" stroke="#22D3EE" stroke-width="8" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="paint0_linear" x1="35" y1="42" x2="123" y2="121" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="0.5" stop-color="#312E81"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+</svg>

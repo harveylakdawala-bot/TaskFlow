@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow | Organise your life. Build your streak.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="site-bg" aria-hidden="true">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+  </div>
+
+  <header class="landing-nav">
+    <a class="brand" href="index.html" data-transition>
+      <img src="taskflow-logo.svg" alt="TaskFlow logo">
+      <span>TaskFlow</span>
+    </a>
+    <nav class="landing-links" aria-label="Main navigation">
+      <a href="about.html" data-transition>About</a>
+      <a href="contact.html" data-transition>Contact</a>
+      <button class="icon-button theme-toggle" type="button" aria-label="Toggle colour mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a class="button ghost" href="login.html" data-transition>Sign in</a>
+    </nav>
+  </header>
+
+  <main class="landing-main">
+    <section class="hero-grid reveal">
+      <div class="hero-copy">
+        <div class="eyebrow"><i class="fa-solid fa-bolt"></i> Student command centre</div>
+        <h1>TaskFlow</h1>
+        <p class="hero-tagline">Organise your life. Build your streak.</p>
+        <p class="hero-text">A polished productivity workspace for school tasks, chores, activities, habits, reminders, AI study coaching and gamified progress.</p>
+        <div class="hero-actions">
+          <button class="button primary" type="button" data-demo-login>
+            <i class="fa-solid fa-play"></i>
+            Try demo
+          </button>
+          <a class="button secondary" href="login.html" data-transition>
+            <i class="fa-solid fa-user-plus"></i>
+            Create account
+          </a>
+        </div>
+      </div>
+
+      <div class="product-visual" aria-label="TaskFlow app preview">
+        <div class="preview-topbar">
+          <span></span><span></span><span></span>
+          <strong>Today</strong>
+        </div>
+        <div class="preview-layout">
+          <aside class="preview-sidebar">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </aside>
+          <div class="preview-content">
+            <div class="preview-stat wide">
+              <small>Focus streak</small>
+              <strong>18 days</strong>
+              <div class="mini-progress"><span style="width: 76%"></span></div>
+            </div>
+            <div class="preview-card purple"></div>
+            <div class="preview-card cyan"></div>
+            <div class="preview-chart">
+              <span style="height: 38%"></span>
+              <span style="height: 62%"></span>
+              <span style="height: 48%"></span>
+              <span style="height: 81%"></span>
+              <span style="height: 58%"></span>
+              <span style="height: 92%"></span>
+              <span style="height: 70%"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-strip reveal" aria-label="TaskFlow highlights">
+      <article>
+        <i class="fa-solid fa-list-check"></i>
+        <h2>Smart Tasks</h2>
+        <p>Priorities, categories, dates, notes, repeats and progress tracking.</p>
+      </article>
+      <article>
+        <i class="fa-solid fa-calendar-days"></i>
+        <h2>Weekly Planner</h2>
+        <p>Drag tasks into a structured Monday to Sunday study schedule.</p>
+      </article>
+      <article>
+        <i class="fa-solid fa-brain"></i>
+        <h2>AI Coach</h2>
+        <p>Keyword-powered coaching for study, exams, motivation and focus.</p>
+      </article>
+      <article>
+        <i class="fa-solid fa-trophy"></i>
+        <h2>Gamified Progress</h2>
+        <p>XP, ranks, badges, achievements and streak momentum.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

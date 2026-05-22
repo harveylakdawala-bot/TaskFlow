@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | TaskFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-page="dashboard">
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="TaskFlow navigation">
+      <a class="brand app-brand" href="dashboard.html" data-transition>
+        <img src="taskflow-logo.svg" alt="TaskFlow logo">
+        <span>TaskFlow</span>
+      </a>
+      <nav class="side-nav">
+        <a href="dashboard.html" data-page-link="dashboard" data-transition><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+        <a href="tasks.html" data-page-link="tasks" data-transition><i class="fa-solid fa-list-check"></i><span>Tasks</span></a>
+        <a href="planner.html" data-page-link="planner" data-transition><i class="fa-solid fa-calendar-week"></i><span>Planner</span></a>
+        <a href="ai-coach.html" data-page-link="ai-coach" data-transition><i class="fa-solid fa-brain"></i><span>AI Coach</span></a>
+        <a href="profile.html" data-page-link="profile" data-transition><i class="fa-solid fa-user-astronaut"></i><span>Profile</span></a>
+        <a href="about.html" data-page-link="about" data-transition><i class="fa-solid fa-circle-info"></i><span>About</span></a>
+        <a href="contact.html" data-page-link="contact" data-transition><i class="fa-solid fa-paper-plane"></i><span>Contact</span></a>
+        <a href="settings.html" data-page-link="settings" data-transition><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+      <div class="streak-chip">
+        <i class="fa-solid fa-fire"></i>
+        <div>
+          <strong data-streak-mini>0</strong>
+          <span>focus streak</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" type="button" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <div class="topbar-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="globalSearch" placeholder="Search tasks, pages, notes...">
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-button" type="button" data-quick-add aria-label="Quick add task"><i class="fa-solid fa-plus"></i></button>
+          <button class="icon-button notification-button" type="button" aria-label="Notifications" data-toggle-notifications>
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-count" data-notification-count>0</span>
+          </button>
+          <button class="icon-button theme-toggle" type="button" aria-label="Toggle colour mode"><i class="fa-solid fa-moon"></i></button>
+          <a class="profile-pill" href="profile.html" data-transition>
+            <img src="avatar.svg" alt="Profile avatar" data-user-avatar>
+            <span data-user-firstname>Harvey</span>
+          </a>
+        </div>
+        <div class="notification-panel glass-card" data-notification-panel></div>
+      </header>
+
+      <section class="page-heading reveal">
+        <div>
+          <p class="eyebrow"><i class="fa-solid fa-star"></i> TaskFlow dashboard</p>
+          <h1 data-greeting>Good Morning, Harvey 👋</h1>
+          <p>Today is ready. Your tasks, streaks and study energy are all in one place.</p>
+        </div>
+        <div class="time-card glass-card">
+          <span id="liveDate">Friday</span>
+          <strong id="liveClock">00:00</strong>
+        </div>
+      </section>
+
+      <section class="stats-grid reveal" aria-label="Productivity statistics">
+        <article class="stat-card">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Active tasks</span>
+          <strong data-active-count>0</strong>
+          <small data-active-caption>Keep your momentum clean.</small>
+        </article>
+        <article class="stat-card">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Completed</span>
+          <strong data-completed-count>0</strong>
+          <small>Tasks finished across TaskFlow.</small>
+        </article>
+        <article class="stat-card">
+          <i class="fa-solid fa-fire-flame-curved"></i>
+          <span>Streak</span>
+          <strong><span data-streak-count>0</span> days</strong>
+          <small>Consistency compounds.</small>
+        </article>
+        <article class="stat-card">
+          <i class="fa-solid fa-ranking-star"></i>
+          <span>Rank</span>
+          <strong data-rank-name>Beginner</strong>
+          <small><span data-level-number>Level 1</span> intelligence level</small>
+        </article>
+      </section>
+
+      <section class="dashboard-grid reveal">
+        <article class="panel chart-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Weekly productivity</h2>
+              <p>Task completions, planner activity and focus sessions.</p>
+            </div>
+            <button class="icon-button" type="button" data-refresh-chart aria-label="Refresh chart"><i class="fa-solid fa-rotate"></i></button>
+          </div>
+          <canvas id="productivityChart" height="120" aria-label="Weekly productivity graph"></canvas>
+        </article>
+
+        <article class="panel xp-panel">
+          <div class="panel-header">
+            <div>
+              <h2>XP Progress</h2>
+              <p><span data-xp-total>0</span> XP earned</p>
+            </div>
+            <div class="level-pill" data-rank-name>Beginner</div>
+          </div>
+          <div class="xp-progress">
+            <div class="xp-bar"><span data-xp-bar></span></div>
+            <small><span data-xp-next>0</span> XP to next level</small>
+          </div>
+          <div class="circle-row">
+            <div class="progress-circle" data-circle="focus"><span>0%</span></div>
+            <div class="progress-circle" data-circle="habits"><span>0%</span></div>
+            <div class="progress-circle" data-circle="planning"><span>0%</span></div>
+          </div>
+        </article>
+
+        <article class="panel schedule-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Upcoming schedule</h2>
+              <p>Your next planned study blocks.</p>
+            </div>
+            <a class="text-link" href="planner.html" data-transition>Open planner</a>
+          </div>
+          <div class="schedule-list" data-upcoming-schedule></div>
+        </article>
+
+        <article class="panel calendar-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Calendar</h2>
+              <p>Current month at a glance.</p>
+            </div>
+          </div>
+          <div class="mini-calendar" id="miniCalendar"></div>
+        </article>
+
+        <article class="panel quote-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Daily quote</h2>
+              <p>Fresh motivation for your next session.</p>
+            </div>
+            <button class="icon-button" type="button" data-new-quote aria-label="New quote"><i class="fa-solid fa-shuffle"></i></button>
+          </div>
+          <blockquote id="dailyQuote"></blockquote>
+        </article>
+
+        <article class="panel weather-panel">
+          <div class="weather-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+          <div>
+            <h2>Sydney focus weather</h2>
+            <strong id="weatherTemp">22°C</strong>
+            <p id="weatherText">Clear study conditions near Blacktown.</p>
+          </div>
+        </article>
+
+        <article class="panel pomodoro-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Pomodoro timer</h2>
+              <p>Focused study sprints with short breaks.</p>
+            </div>
+          </div>
+          <div class="timer-display" data-timer-display>25:00</div>
+          <div class="timer-actions">
+            <button class="button primary" type="button" data-timer-start><i class="fa-solid fa-play"></i>Start</button>
+            <button class="button ghost" type="button" data-timer-pause><i class="fa-solid fa-pause"></i>Pause</button>
+            <button class="icon-button" type="button" data-timer-reset aria-label="Reset timer"><i class="fa-solid fa-rotate-left"></i></button>
+          </div>
+        </article>
+
+        <article class="panel music-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Focus music</h2>
+              <p>Ambient mode for homework blocks.</p>
+            </div>
+            <button class="icon-button" type="button" data-music-toggle aria-label="Toggle music"><i class="fa-solid fa-play"></i></button>
+          </div>
+          <div class="equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <input type="range" min="0" max="100" value="42" aria-label="Music volume" data-music-volume>
+        </article>
+
+        <article class="panel heatmap-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Productivity heatmap</h2>
+              <p>Recent study consistency.</p>
+            </div>
+          </div>
+          <div class="heatmap" data-heatmap></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" data-modal="taskModal" aria-hidden="true">
+    <form class="task-modal glass-card" id="taskForm" novalidate>
+      <div class="modal-header">
+        <h2 data-task-modal-title>Add task</h2>
+        <button class="icon-button" type="button" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <input type="hidden" id="taskId">
+      <label><span>Task title</span><input id="taskTitle" type="text" placeholder="English essay draft" required></label>
+      <div class="form-grid two">
+        <label><span>Category</span><select id="taskCategory"></select></label>
+        <label><span>Priority</span><select id="taskPriority"><option>Low</option><option>Medium</option><option>High</option><option>Urgent</option></select></label>
+        <label><span>Due date</span><input id="taskDueDate" type="date" required></label>
+        <label><span>Repeat</span><select id="taskRepeat"><option>None</option><option>Daily</option><option>Weekly</option><option>Monthly</option></select></label>
+      </div>
+      <label><span>Progress</span><input id="taskProgress" type="range" min="0" max="100" value="0"></label>
+      <label><span>Notes</span><textarea id="taskNotes" rows="4" placeholder="Add useful context, links or reminders."></textarea></label>
+      <button class="button primary full" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save task</button>
+    </form>
+  </div>
+
+  <div class="achievement-popup glass-card" data-achievement-popup aria-live="polite"></div>
+  <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

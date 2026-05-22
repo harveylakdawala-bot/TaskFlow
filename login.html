@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | TaskFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="login">
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="site-bg auth-bg" aria-hidden="true">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+  </div>
+
+  <main class="auth-shell">
+    <section class="auth-showcase reveal">
+      <a class="brand" href="index.html" data-transition>
+        <img src="taskflow-logo.svg" alt="TaskFlow logo">
+        <span>TaskFlow</span>
+      </a>
+      <h1>Organise your life. Build your streak.</h1>
+      <p>Turn school responsibilities into a clean, motivating daily system with streaks, reminders, coaching and progress you can feel.</p>
+      <div class="auth-metrics" aria-label="Productivity metrics">
+        <div>
+          <strong>92%</strong>
+          <span>weekly focus score</span>
+        </div>
+        <div>
+          <strong>18</strong>
+          <span>day streak</span>
+        </div>
+        <div>
+          <strong>4.8k</strong>
+          <span>XP earned</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-card glass-card reveal" aria-label="Account access">
+      <div class="auth-switch" role="tablist" aria-label="Authentication">
+        <button class="active" type="button" data-auth-view="login">Login</button>
+        <button type="button" data-auth-view="signup">Create account</button>
+      </div>
+
+      <form id="loginForm" class="auth-form active" novalidate>
+        <h2>Welcome back</h2>
+        <p class="form-subtitle">Continue to your student productivity dashboard.</p>
+        <button class="social-button" type="button" data-google-login>
+          <i class="fa-brands fa-google"></i>
+          Continue with Google
+        </button>
+        <div class="divider"><span>or</span></div>
+        <label>
+          <span>Email</span>
+          <input type="email" id="loginEmail" placeholder="harvey@student.com" autocomplete="email" required>
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required minlength="6">
+        </label>
+        <div class="form-row split">
+          <label class="check-label">
+            <input type="checkbox" id="rememberMe">
+            <span>Remember me</span>
+          </label>
+          <button class="text-link" type="button" data-forgot-password>Forgot password?</button>
+        </div>
+        <button class="button primary full" type="submit">
+          <span>Login</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button class="button ghost full" type="button" data-demo-login>
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          Enter Harvey demo
+        </button>
+      </form>
+
+      <form id="signupForm" class="auth-form" novalidate>
+        <h2>Create your workspace</h2>
+        <p class="form-subtitle">Start with a clean task system and your own profile.</p>
+        <label>
+          <span>Full name</span>
+          <input type="text" id="signupName" placeholder="Harvey Nguyen" autocomplete="name" required minlength="2">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" id="signupEmail" placeholder="you@student.com" autocomplete="email" required>
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" id="signupPassword" placeholder="Create a strong password" autocomplete="new-password" required minlength="6">
+        </label>
+        <div class="strength-meter" aria-live="polite">
+          <span></span>
+          <small id="strengthText">Password strength</small>
+        </div>
+        <label>
+          <span>Confirm password</span>
+          <input type="password" id="signupConfirm" placeholder="Repeat your password" autocomplete="new-password" required>
+        </label>
+        <label class="check-label terms-line">
+          <input type="checkbox" id="termsAgree" required>
+          <span>I agree to use TaskFlow responsibly.</span>
+        </label>
+        <button class="button primary full" type="submit">
+          <span>Create account</span>
+          <i class="fa-solid fa-star"></i>
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>

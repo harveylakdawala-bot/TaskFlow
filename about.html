@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | TaskFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="about">
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="TaskFlow navigation">
+      <a class="brand app-brand" href="dashboard.html" data-transition><img src="taskflow-logo.svg" alt="TaskFlow logo"><span>TaskFlow</span></a>
+      <nav class="side-nav">
+        <a href="dashboard.html" data-page-link="dashboard" data-transition><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+        <a href="tasks.html" data-page-link="tasks" data-transition><i class="fa-solid fa-list-check"></i><span>Tasks</span></a>
+        <a href="planner.html" data-page-link="planner" data-transition><i class="fa-solid fa-calendar-week"></i><span>Planner</span></a>
+        <a href="ai-coach.html" data-page-link="ai-coach" data-transition><i class="fa-solid fa-brain"></i><span>AI Coach</span></a>
+        <a href="profile.html" data-page-link="profile" data-transition><i class="fa-solid fa-user-astronaut"></i><span>Profile</span></a>
+        <a href="about.html" data-page-link="about" data-transition><i class="fa-solid fa-circle-info"></i><span>About</span></a>
+        <a href="contact.html" data-page-link="contact" data-transition><i class="fa-solid fa-paper-plane"></i><span>Contact</span></a>
+        <a href="settings.html" data-page-link="settings" data-transition><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+      <div class="streak-chip"><i class="fa-solid fa-fire"></i><div><strong data-streak-mini>0</strong><span>focus streak</span></div></div>
+    </aside>
+
+    <main class="app-main">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" type="button" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <div class="topbar-search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" id="globalSearch" placeholder="Search tasks, pages, notes..."></div>
+        <div class="topbar-actions">
+          <button class="icon-button" type="button" data-quick-add aria-label="Quick add task"><i class="fa-solid fa-plus"></i></button>
+          <button class="icon-button notification-button" type="button" aria-label="Notifications" data-toggle-notifications><i class="fa-solid fa-bell"></i><span class="notification-count" data-notification-count>0</span></button>
+          <button class="icon-button theme-toggle" type="button" aria-label="Toggle colour mode"><i class="fa-solid fa-moon"></i></button>
+          <a class="profile-pill" href="profile.html" data-transition><img src="avatar.svg" alt="Profile avatar" data-user-avatar><span data-user-firstname>Harvey</span></a>
+        </div>
+        <div class="notification-panel glass-card" data-notification-panel></div>
+      </header>
+
+      <section class="about-hero reveal">
+        <p class="eyebrow"><i class="fa-solid fa-circle-info"></i> About TaskFlow</p>
+        <h1>Built for students who carry a lot.</h1>
+        <p>TaskFlow is an all-in-one responsibility and productivity platform for high school and college students. It combines homework, chores, extracurriculars, reminders, habits, weekly planning and motivation into a single intelligent workspace.</p>
+      </section>
+
+      <section class="about-stats reveal">
+        <article><strong data-count-up="8">0</strong><span>core modules</span></article>
+        <article><strong data-count-up="50">0</strong><span>level target</span></article>
+        <article><strong data-count-up="7">0</strong><span>planner days</span></article>
+        <article><strong data-count-up="100">0</strong><span>student focused</span></article>
+      </section>
+
+      <section class="mission-grid reveal">
+        <article class="panel mission-card">
+          <h2>Mission</h2>
+          <p>TaskFlow was created to help students transform scattered responsibilities into a system that feels calm, motivating and achievable every day.</p>
+        </article>
+        <article class="panel values-card">
+          <h2>Core values</h2>
+          <div class="values-grid">
+            <span><i class="fa-solid fa-crosshairs"></i>Focus</span>
+            <span><i class="fa-solid fa-chart-line"></i>Productivity</span>
+            <span><i class="fa-solid fa-repeat"></i>Consistency</span>
+            <span><i class="fa-solid fa-bolt"></i>Motivation</span>
+            <span><i class="fa-solid fa-people-group"></i>Community</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="timeline-section reveal">
+        <article class="timeline-item panel"><span>01</span><h2>Capture work</h2><p>Students add homework, chores, sport, fitness and personal responsibilities with priorities and reminders.</p></article>
+        <article class="timeline-item panel"><span>02</span><h2>Plan the week</h2><p>Tasks become time blocks across Monday to Sunday so students can see their real workload.</p></article>
+        <article class="timeline-item panel"><span>03</span><h2>Build momentum</h2><p>XP, badges, streaks and AI coaching help students keep going when motivation drops.</p></article>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" data-modal="taskModal" aria-hidden="true">
+    <form class="task-modal glass-card" id="taskForm" novalidate>
+      <div class="modal-header"><h2 data-task-modal-title>Add task</h2><button class="icon-button" type="button" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+      <input type="hidden" id="taskId">
+      <label><span>Task title</span><input id="taskTitle" type="text" placeholder="Reflect on goals" required></label>
+      <div class="form-grid two">
+        <label><span>Category</span><select id="taskCategory"></select></label>
+        <label><span>Priority</span><select id="taskPriority"><option>Low</option><option>Medium</option><option>High</option><option>Urgent</option></select></label>
+        <label><span>Due date</span><input id="taskDueDate" type="date" required></label>
+        <label><span>Repeat</span><select id="taskRepeat"><option>None</option><option>Daily</option><option>Weekly</option><option>Monthly</option></select></label>
+      </div>
+      <label><span>Progress</span><input id="taskProgress" type="range" min="0" max="100" value="0"></label>
+      <label><span>Notes</span><textarea id="taskNotes" rows="4" placeholder="Add useful context, links or reminders."></textarea></label>
+      <button class="button primary full" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save task</button>
+    </form>
+  </div>
+
+  <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

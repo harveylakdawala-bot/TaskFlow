@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | TaskFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="contact">
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="TaskFlow navigation">
+      <a class="brand app-brand" href="dashboard.html" data-transition><img src="taskflow-logo.svg" alt="TaskFlow logo"><span>TaskFlow</span></a>
+      <nav class="side-nav">
+        <a href="dashboard.html" data-page-link="dashboard" data-transition><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+        <a href="tasks.html" data-page-link="tasks" data-transition><i class="fa-solid fa-list-check"></i><span>Tasks</span></a>
+        <a href="planner.html" data-page-link="planner" data-transition><i class="fa-solid fa-calendar-week"></i><span>Planner</span></a>
+        <a href="ai-coach.html" data-page-link="ai-coach" data-transition><i class="fa-solid fa-brain"></i><span>AI Coach</span></a>
+        <a href="profile.html" data-page-link="profile" data-transition><i class="fa-solid fa-user-astronaut"></i><span>Profile</span></a>
+        <a href="about.html" data-page-link="about" data-transition><i class="fa-solid fa-circle-info"></i><span>About</span></a>
+        <a href="contact.html" data-page-link="contact" data-transition><i class="fa-solid fa-paper-plane"></i><span>Contact</span></a>
+        <a href="settings.html" data-page-link="settings" data-transition><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+      <div class="streak-chip"><i class="fa-solid fa-fire"></i><div><strong data-streak-mini>0</strong><span>focus streak</span></div></div>
+    </aside>
+
+    <main class="app-main">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" type="button" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <div class="topbar-search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" id="globalSearch" placeholder="Search tasks, pages, notes..."></div>
+        <div class="topbar-actions">
+          <button class="icon-button" type="button" data-quick-add aria-label="Quick add task"><i class="fa-solid fa-plus"></i></button>
+          <button class="icon-button notification-button" type="button" aria-label="Notifications" data-toggle-notifications><i class="fa-solid fa-bell"></i><span class="notification-count" data-notification-count>0</span></button>
+          <button class="icon-button theme-toggle" type="button" aria-label="Toggle colour mode"><i class="fa-solid fa-moon"></i></button>
+          <a class="profile-pill" href="profile.html" data-transition><img src="avatar.svg" alt="Profile avatar" data-user-avatar><span data-user-firstname>Harvey</span></a>
+        </div>
+        <div class="notification-panel glass-card" data-notification-panel></div>
+      </header>
+
+      <section class="page-heading reveal">
+        <div>
+          <p class="eyebrow"><i class="fa-solid fa-paper-plane"></i> Contact</p>
+          <h1>Connect with TaskFlow</h1>
+          <p>Send feedback, questions or assessment notes through a polished contact experience.</p>
+        </div>
+      </section>
+
+      <section class="contact-layout reveal">
+        <form class="contact-form panel" id="contactForm" novalidate>
+          <div class="form-grid two">
+            <label><span>Name</span><input id="contactName" type="text" placeholder="Your name" required></label>
+            <label><span>Email</span><input id="contactEmail" type="email" placeholder="you@student.com" required></label>
+          </div>
+          <label><span>Subject</span><input id="contactSubject" type="text" placeholder="Project feedback" required></label>
+          <label><span>Message</span><textarea id="contactMessage" rows="7" placeholder="Write your message..." required></textarea></label>
+          <button class="button primary full animated-submit" type="submit"><i class="fa-solid fa-paper-plane"></i><span>Send message</span></button>
+        </form>
+
+        <aside class="contact-cards">
+          <article class="panel contact-card"><i class="fa-solid fa-school"></i><h2>School</h2><p>Blacktown Boys High School</p></article>
+          <article class="panel contact-card"><i class="fa-solid fa-location-dot"></i><h2>Location</h2><p>Sydney, NSW</p></article>
+          <article class="panel contact-card"><i class="fa-solid fa-envelope"></i><h2>Email</h2><p>hello@taskflow.local</p></article>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" data-modal="taskModal" aria-hidden="true">
+    <form class="task-modal glass-card" id="taskForm" novalidate>
+      <div class="modal-header"><h2 data-task-modal-title>Add task</h2><button class="icon-button" type="button" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+      <input type="hidden" id="taskId">
+      <label><span>Task title</span><input id="taskTitle" type="text" placeholder="Follow up contact" required></label>
+      <div class="form-grid two">
+        <label><span>Category</span><select id="taskCategory"></select></label>
+        <label><span>Priority</span><select id="taskPriority"><option>Low</option><option>Medium</option><option>High</option><option>Urgent</option></select></label>
+        <label><span>Due date</span><input id="taskDueDate" type="date" required></label>
+        <label><span>Repeat</span><select id="taskRepeat"><option>None</option><option>Daily</option><option>Weekly</option><option>Monthly</option></select></label>
+      </div>
+      <label><span>Progress</span><input id="taskProgress" type="range" min="0" max="100" value="0"></label>
+      <label><span>Notes</span><textarea id="taskNotes" rows="4" placeholder="Add useful context, links or reminders."></textarea></label>
+      <button class="button primary full" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save task</button>
+    </form>
+  </div>
+
+  <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
